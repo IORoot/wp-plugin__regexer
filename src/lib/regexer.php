@@ -34,6 +34,8 @@ class regexposts {
             'regex_result'          => get_field('regex_preview_result', 'option'),
         );
 
+        if (empty($this->options['regex_replacement'])){ $this->options['regex_replacement'] = ''; }
+
         return $this;
     }
 
@@ -60,7 +62,8 @@ class regexposts {
 
             // on LIVE mode, Set the regex_text to be the post content
             $singlepost = get_post($this->options['regex_post_id']);
-            $this->options['regex_text'] = $singlepost->post_content;
+            $field = $this->options['regex_post_field'];
+            $this->options['regex_text'] = $singlepost->$field;
 
             // run the regexer
             $this->regexer();
@@ -97,7 +100,8 @@ class regexposts {
         foreach( $pages as $page ){
 
             // Set the text to regex
-            $this->options['regex_text'] = $page->post_content;
+            $field = $this->options['regex_post_field'];
+            $this->options['regex_text'] = $singlepost->$field;
 
             // run the regexer
             $this->regexer();
