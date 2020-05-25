@@ -8,7 +8,7 @@
  * @wordpress-plugin
  * Plugin Name:       _ANDYP - Regex Posts
  * Plugin URI:        http://londonparkour.com
- * Description:       Bulk Regex on post fields.
+ * Description:       <strong>🎛PANEL</strong> | <em>ANDYP > Regex Posts.</em> | Bulk Regex on post fields.
  * Version:           1.0.0
  * Author:            Andy Pearson
  * Author URI:        https://londonparkour.com
