@@ -15,7 +15,7 @@ if( function_exists('acf_add_options_page') ) {
         'menu_slug' => 'regexposts',
         'capability' => 'manage_options',
         'position' => '100.2',
-        'parent_slug' => 'edit.php?post_type=article',
+        'parent_slug' => 'andyp',
         'icon_url' => 'dashicons-screenoptions',
         'redirect' => true,
         'post_id' => 'options',
