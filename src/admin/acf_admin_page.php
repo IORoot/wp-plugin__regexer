@@ -11,7 +11,7 @@ if( function_exists('acf_add_options_page') ) {
     $args = array(
 
         'page_title' => 'Regex Posts',
-        'menu_title' => 'Regex Posts',
+        'menu_title' => '✂️ Regex Posts',
         'menu_slug' => 'regexposts',
         'capability' => 'manage_options',
         'position' => '100.2',
