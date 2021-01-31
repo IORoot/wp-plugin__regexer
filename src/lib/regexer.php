@@ -1,156 +1,103 @@
 <?php
 
-class regexposts {
+namespace andyp\regexer\lib;
 
-    public $options;
+use andyp\regexer\lib\options;
+use andyp\regexer\lib\wp_query;
+use andyp\regexer\lib\transform;
+use andyp\regexer\lib\update;
+use andyp\regexer\lib\preview;
 
-    public $live_input;
+class regexer {
 
-    public $output;
+    private $all_options;
+    private $options;
 
-    /**
-     * __construct
-     *
-     * @return void
-     */
-    public function __construct(){
-        return $this;
+    private $posts;
+
+    private $results;
+
+    private $preview;
+
+
+
+    public function run(){
+
+        $this->get_options();
+        $this->loop_instances();
+        
     }
 
-    /**
-     * get_options_array
-     *
-     * @return void
-     */
-    public function get_options(){
-
-        $this->options = array ( 
-            'regex_post_type'       => get_field('regex_post_type', 'option'),
-            'regex_post_field'      => get_field('regex_post_field', 'option'),
-            'regex_post_id'         => get_field('regex_post_id', 'option'),
-            'regex'                 => get_field('regex_to_run', 'option'),
-            'regex_replacement'     => get_field('regex_replacement', 'option'),
-            'regex_text'            => get_field('regex_preview_text', 'option'),
-            'regex_result'          => get_field('regex_preview_result', 'option'),
-        );
-
-        if (empty($this->options['regex_replacement'])){ $this->options['regex_replacement'] = ''; }
-
-        return $this;
+    private function get_options()
+    {
+        $op = new options;
+        $op->run();
+        $this->all_options = $op->get_result();
+        $this->apply = $this->all_options['preview'];
+        unset($this->all_options['preview']);
     }
 
 
-    /**
-     * regex_live
-     *
-     * @return void
-     */
-    public function regex_live(){
-
-        // Check we have everything we need.
-        if ($this->options['regex_post_type'] == ''){ return; }
-        if ($this->options['regex_post_field'] == ''){ return; }
-        if ($this->options['regex'] == ''){ return; }
-
-        //  ┌─────────────────────────────────────────────────────────────────────────┐ 
-        //  │                                                                         │░
-        //  │                            SINGLE POST mode                             │░
-        //  │                                                                         │░
-        //  └─────────────────────────────────────────────────────────────────────────┘░
-        //   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-        if ($this->options['regex_post_id'] != ''){ 
-
-            // on LIVE mode, Set the regex_text to be the post content
-            $singlepost = get_post($this->options['regex_post_id']);
-            $field = $this->options['regex_post_field'];
-            $this->options['regex_text'] = $singlepost->$field;
-
-            // run the regexer
-            $this->regexer();
-
-            // Update post ID
-            $update_single_post = array(
-                'ID'                                 => $this->options['regex_post_id'],
-                $this->options['regex_post_field']   => $this->output
-            );
-
-            // Update the post in the database
-            wp_update_post( $update_single_post );
-
-            // update result field.
-            update_field( 'regex_preview_result', $this->output , 'option' );
-
-            return;
+    private function loop_instances()
+    {
+        foreach ($this->all_options as $this->options_key => $this->options)
+        {
+            if (empty($this->options['enabled'])){ continue; }
+            $this->query();
+            $this->preview_original();
+            $this->transform();
+            $this->update();
+            $this->preview_transformed();
         }
 
-        //  ┌─────────────────────────────────────────────────────────────────────────┐ 
-        //  │                                                                         │░
-        //  │                             BULK POST mode                              │░
-        //  │                                                                         │░
-        //  └─────────────────────────────────────────────────────────────────────────┘░
-        //   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-        
-        $args = array(
-            'post_type' => $this->options['regex_post_type'],
-            'numberposts' => -1
-        );
+    }
+
+    private function query()
+    {
+        $query = new wp_query;
+        $query->set_query($this->options['query']);
+        $query->run();
+        $this->posts = $query->get_results();
+    }
+
+
+
+    private function transform()
+    {
+        $transform = new transform;
+        $transform->set_posts($this->posts);
+        $transform->set_target($this->options['target']);
+        $transform->set_transforms($this->options['transform']);
+        $transform->run();
+        $this->results = $transform->get_results();
+    }
+
     
-        $pages = get_posts( $args );
-        
-        foreach( $pages as $page ){
-
-            // Set the text to regex
-            $field = $this->options['regex_post_field'];
-            $this->options['regex_text'] = $singlepost->$field;
-
-            // run the regexer
-            $this->regexer();
-
-            $post = array(
-                'ID'                                => $page->ID,
-                $this->options['regex_post_field']  => $this->output,
-            );
-
-            wp_update_post( $post );
-        }
-
-        return;
+    private function update()
+    {
+        if (empty($this->apply)){ return; }
+        $update = new update;
+        $update->set_posts($this->results);
+        $update->set_target($this->options['target']);
+        $update->run();
     }
 
-
-    /**
-     * regex_preview
-     *
-     * @return void
-     */
-    public function regex_preview(){
-
-        $this->regexer();
-
-        update_field( 'regex_preview_result', $this->output , 'option' );
-
-        return;
+    
+    private function preview_original()
+    {
+        $this->preview = new preview;
+        $this->preview->set_target($this->options['target']);
+        $this->preview->set_posts($this->posts);
+        $this->preview->set_key($this->options_key + 1);
+        $this->preview->run_original();
     }
 
-
-    /**
-     * regexer
-     *
-     * @return void
-     */
-    public function regexer(){
-
-        if ($this->options['regex'] == ''){ return; }
-        if ($this->options['regex_text'] == ''){ return; }
-
-        $this->output = preg_replace(
-            $this->options['regex'],
-            $this->options['regex_replacement'],
-            $this->options['regex_text']
-        );
-
-        return;
-
+    
+    private function preview_transformed()
+    {
+        $this->preview->set_results($this->results);
+        $this->preview->run_transformed();
     }
+
 
 }
