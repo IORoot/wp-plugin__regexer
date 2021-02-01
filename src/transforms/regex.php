@@ -36,7 +36,11 @@ class regex
         $pattern = $this->options['regex_match'];
         $replacement = $this->options['replacement'];
         $subject = $this->field;
-        $limit = $this->options['limit'];
+        $limit = null;
+        if (!empty($this->options['limit'])){ 
+            $limit = $this->options['limit'];
+        };
+
         
         $this->result = preg_replace($pattern, $replacement, $subject, $limit);
 
