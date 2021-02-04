@@ -13,7 +13,7 @@ class initialise {
         //  └─────────────────────────────────────────────────────────────────────────┘
         require __DIR__.'/acf/acf_admin_page.php';
         require __DIR__.'/acf/acf_admin_style.php';
-        // require __DIR__.'/acf/acf_dashboard.php';
+        require __DIR__.'/acf/acf_dashboard.php';
         require __DIR__.'/acf/acf_update.php';
 
         //  ┌─────────────────────────────────────────────────────────────────────────┐

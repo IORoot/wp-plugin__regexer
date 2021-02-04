@@ -1,0 +1,505 @@
+[
+    {
+        "key": "group_6016570e6c603",
+        "title": "Regex v2",
+        "fields": [
+            {
+                "key": "field_60169687da2a1",
+                "label": "<span class=\"mdi mdi-regex\"><\/span> Regexer",
+                "name": "regexer",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "field_6016966eda2a0",
+                "min": 0,
+                "max": 0,
+                "layout": "block",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_601695f305403",
+                        "label": "<span class=\"mdi mdi-bee\"><\/span> Instance",
+                        "name": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "left",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_6016966eda2a0",
+                        "label": "Reference",
+                        "name": "reference",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_60169652da29f",
+                        "label": "Enabled",
+                        "name": "enabled",
+                        "type": "true_false",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "",
+                        "default_value": 1,
+                        "ui": 1,
+                        "ui_on_text": "",
+                        "ui_off_text": ""
+                    },
+                    {
+                        "key": "field_601661cdf7403",
+                        "label": "<span class=\"mdi mdi-database-import\"><\/span> WP_Query",
+                        "name": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "left",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_60165872c8bee",
+                        "label": "<span class=\"mdi mdi-database-import\"><\/span> WP_Query",
+                        "name": "query",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "ue__codemirror",
+                            "id": ""
+                        },
+                        "default_value": "[\r\n\t'post_type' => 'posts',\r\n\t'numberposts' => 10,\r\n]",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": 4,
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_601661dcf7404",
+                        "label": "<span class=\"mdi mdi-bullseye\"><\/span> Target Field",
+                        "name": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "left",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_6016596d367ef",
+                        "label": "<span class=\"mdi mdi-bullseye\"><\/span> Target Field",
+                        "name": "target",
+                        "type": "text",
+                        "instructions": "This is the field you wish to perform the edits on.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_601661e7f7405",
+                        "label": "<span class=\"mdi mdi-cog-transfer\"><\/span> Transform",
+                        "name": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "left",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_60165ab4367f2",
+                        "label": "<span class=\"mdi mdi-cog-transfer\"><\/span> Transform",
+                        "name": "transform",
+                        "type": "flexible_content",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layouts": {
+                            "layout_60165a81b4338": {
+                                "key": "layout_60165a81b4338",
+                                "name": "regex",
+                                "label": "<span class=\"mdi mdi-regex\"><\/span> Regex Replace",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_60165b02367f3",
+                                        "label": "<span class=\"mdi mdi-regex\"><\/span> Regex Match",
+                                        "name": "regex_match",
+                                        "type": "textarea",
+                                        "instructions": "<a href=\"https:\/\/www.php.net\/manual\/en\/reference.pcre.pattern.syntax.php\">PCRE Patterns<\/a><br\/>\r\n<a href=\"https:\/\/www.php.net\/manual\/en\/reference.pcre.pattern.modifiers.php\">PCRE Regex Modifiers<\/a><br\/>",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "ue__codemirror",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "maxlength": "",
+                                        "rows": 4,
+                                        "new_lines": ""
+                                    },
+                                    {
+                                        "key": "field_60165b1c367f4",
+                                        "label": "<span class=\"mdi mdi-file-replace-outline\"><\/span> Replacement",
+                                        "name": "replacement",
+                                        "type": "textarea",
+                                        "instructions": "Use capture groups <code>'\/(text1)text2(text3)\/is'<\/code> will give a <code>$1<\/code> and <code>$2<\/code>.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "ue__codemirror",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "maxlength": "",
+                                        "rows": 4,
+                                        "new_lines": ""
+                                    },
+                                    {
+                                        "key": "field_6016aad6a36f9",
+                                        "label": "<span class=\"mdi mdi-counter\"><\/span> Limit",
+                                        "name": "limit",
+                                        "type": "number",
+                                        "instructions": "Number of matches to replace. Leave blank to apply to all.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": ""
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_60165b70367f5": {
+                                "key": "layout_60165b70367f5",
+                                "name": "replace",
+                                "label": "<span class=\"mdi mdi-find-replace\"><\/span> Text Replace",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_60165b95367f6",
+                                        "label": "<span class=\"mdi mdi-file-find\"><\/span> Find",
+                                        "name": "find",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    },
+                                    {
+                                        "key": "field_60165bcc367f7",
+                                        "label": "<span class=\"mdi mdi-file-replace-outline\"><\/span> Replacement",
+                                        "name": "replacement",
+                                        "type": "textarea",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "maxlength": "",
+                                        "rows": "",
+                                        "new_lines": ""
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_60165be5367f8": {
+                                "key": "layout_60165be5367f8",
+                                "name": "prefix",
+                                "label": "<span class=\"mdi mdi-format-letter-starts-with\"><\/span> Prefix",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_60165c06367f9",
+                                        "label": "<span class=\"mdi mdi-format-letter-starts-with\"><\/span> Prefix",
+                                        "name": "prefix",
+                                        "type": "textarea",
+                                        "instructions": "Append to the start",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "maxlength": "",
+                                        "rows": "",
+                                        "new_lines": ""
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_60165c4f367fa": {
+                                "key": "layout_60165c4f367fa",
+                                "name": "suffix",
+                                "label": "<span class=\"mdi mdi-format-letter-starts-with\"><\/span> Suffix",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_60165c4f367fb",
+                                        "label": "<span class=\"mdi mdi-contain-end\"><\/span> Suffix",
+                                        "name": "prefix",
+                                        "type": "textarea",
+                                        "instructions": "Append to the end.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "maxlength": "",
+                                        "rows": "",
+                                        "new_lines": ""
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_60165ca9367fc": {
+                                "key": "layout_60165ca9367fc",
+                                "name": "remove",
+                                "label": "<span class=\"mdi mdi-trash-can\"><\/span> Remove",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_60165cc0367fd",
+                                        "label": "<span class=\"mdi mdi-trash-can\"><\/span> Remove",
+                                        "name": "remove",
+                                        "type": "textarea",
+                                        "instructions": "Text to find and remove.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "maxlength": "",
+                                        "rows": "",
+                                        "new_lines": ""
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            }
+                        },
+                        "button_label": "Add Row",
+                        "min": "",
+                        "max": ""
+                    },
+                    {
+                        "key": "field_601665201be2c",
+                        "label": "<span class=\"mdi mdi-monitor-eye\"><\/span> Preview",
+                        "name": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "left",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_6016655a1be2d",
+                        "label": "<span class=\"mdi mdi-format-letter-case-upper\"><\/span> Original Value",
+                        "name": "original",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "ue__codemirror",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_601665d21be2e",
+                        "label": "<span class=\"mdi mdi-format-letter-case-lower\"><\/span> Transformed Value",
+                        "name": "transformed",
+                        "type": "textarea",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "ue__codemirror",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": ""
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "regexposts"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_601664390c6ac",
+        "title": "Regex v2 sidebar",
+        "fields": [
+            {
+                "key": "field_6016647f8ac13",
+                "label": "<span class=\"mdi mdi-monitor-eye\"><\/span> Apply or Preview",
+                "name": "regexer_preview",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "Apply",
+                "ui_off_text": "Preview"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "regexposts"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]
