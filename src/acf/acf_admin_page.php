@@ -10,13 +10,12 @@ add_action('acf/init', 'menu_regexer');
 function menu_regexer(){
     if (function_exists('acf_add_options_page')) {
         $args = array(
-            'page_title' => '<svg viewBox="0 0 24 24" style="height:1.3em; vertical-align:text-bottom; fill:#3D5AFE;" xmlns="http://www.w3.org/2000/svg"><path d="M16,16.92C15.67,16.97 15.34,17 15,17C14.66,17 14.33,16.97 14,16.92V13.41L11.5,15.89C11,15.5 10.5,15 10.11,14.5L12.59,12H9.08C9.03,11.67 9,11.34 9,11C9,10.66 9.03,10.33 9.08,10H12.59L10.11,7.5C10.3,7.25 10.5,7 10.76,6.76V6.76C11,6.5 11.25,6.3 11.5,6.11L14,8.59V5.08C14.33,5.03 14.66,5 15,5C15.34,5 15.67,5.03 16,5.08V8.59L18.5,6.11C19,6.5 19.5,7 19.89,7.5L17.41,10H20.92C20.97,10.33 21,10.66 21,11C21,11.34 20.97,11.67 20.92,12H17.41L19.89,14.5C19.7,14.75 19.5,15 19.24,15.24V15.24C19,15.5 18.75,15.7 18.5,15.89L16,13.41V16.92H16V16.92M5,19A2,2 0 0,1 7,17A2,2 0 0,1 9,19A2,2 0 0,1 7,21A2,2 0 0,1 5,19H5Z"/></svg> Regex Posts',
-            'menu_title' => '<svg viewBox="0 0 24 24" style="height:1.3em; vertical-align:text-bottom; fill:#3D5AFE;" xmlns="http://www.w3.org/2000/svg"><path d="M16,16.92C15.67,16.97 15.34,17 15,17C14.66,17 14.33,16.97 14,16.92V13.41L11.5,15.89C11,15.5 10.5,15 10.11,14.5L12.59,12H9.08C9.03,11.67 9,11.34 9,11C9,10.66 9.03,10.33 9.08,10H12.59L10.11,7.5C10.3,7.25 10.5,7 10.76,6.76V6.76C11,6.5 11.25,6.3 11.5,6.11L14,8.59V5.08C14.33,5.03 14.66,5 15,5C15.34,5 15.67,5.03 16,5.08V8.59L18.5,6.11C19,6.5 19.5,7 19.89,7.5L17.41,10H20.92C20.97,10.33 21,10.66 21,11C21,11.34 20.97,11.67 20.92,12H17.41L19.89,14.5C19.7,14.75 19.5,15 19.24,15.24V15.24C19,15.5 18.75,15.7 18.5,15.89L16,13.41V16.92H16V16.92M5,19A2,2 0 0,1 7,17A2,2 0 0,1 9,19A2,2 0 0,1 7,21A2,2 0 0,1 5,19H5Z"/></svg> Regex Posts',
+            'page_title' => 'Regex Posts',
+            'menu_title' => 'Regex Posts',
             'menu_slug' => 'regexposts',
             'capability' => 'manage_options',
-            'position' => 5,
-            'parent_slug' => 'andyp',
-            'icon_url' => 'dashicons-screenoptions',
+            'position' => 101,
+            'icon_url' => 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE2LDE2LjkyQzE1LjY3LDE2Ljk3IDE1LjM0LDE3IDE1LDE3QzE0LjY2LDE3IDE0LjMzLDE2Ljk3IDE0LDE2LjkyVjEzLjQxTDExLjUsMTUuODlDMTEsMTUuNSAxMC41LDE1IDEwLjExLDE0LjVMMTIuNTksMTJIOS4wOEM5LjAzLDExLjY3IDksMTEuMzQgOSwxMUM5LDEwLjY2IDkuMDMsMTAuMzMgOS4wOCwxMEgxMi41OUwxMC4xMSw3LjVDMTAuMyw3LjI1IDEwLjUsNyAxMC43Niw2Ljc2VjYuNzZDMTEsNi41IDExLjI1LDYuMyAxMS41LDYuMTFMMTQsOC41OVY1LjA4QzE0LjMzLDUuMDMgMTQuNjYsNSAxNSw1QzE1LjM0LDUgMTUuNjcsNS4wMyAxNiw1LjA4VjguNTlMMTguNSw2LjExQzE5LDYuNSAxOS41LDcgMTkuODksNy41TDE3LjQxLDEwSDIwLjkyQzIwLjk3LDEwLjMzIDIxLDEwLjY2IDIxLDExQzIxLDExLjM0IDIwLjk3LDExLjY3IDIwLjkyLDEySDE3LjQxTDE5Ljg5LDE0LjVDMTkuNywxNC43NSAxOS41LDE1IDE5LjI0LDE1LjI0VjE1LjI0QzE5LDE1LjUgMTguNzUsMTUuNyAxOC41LDE1Ljg5TDE2LDEzLjQxVjE2LjkySDE2VjE2LjkyTTUsMTlBMiwyIDAgMCwxIDcsMTdBMiwyIDAgMCwxIDksMTlBMiwyIDAgMCwxIDcsMjFBMiwyIDAgMCwxIDUsMTlINVoiLz48L3N2Zz4=',
             'redirect' => true,
             'post_id' => 'options',
             'autoload' => false,
@@ -24,6 +23,6 @@ function menu_regexer(){
             'updated_message'	=> __("Options Updated", 'acf'),
         );
 
-        acf_add_options_sub_page($args);
+        acf_add_options_page($args);
     }
 }
