@@ -38,7 +38,7 @@ class preview
 
     private function post_or_meta()
     {
-        if (array_key_exists($this->target,$this->posts[0]['post']))
+        if (property_exists($this->posts[0]['post'],$this->target))
         {
             $this->post_or_meta = 'post';
         }

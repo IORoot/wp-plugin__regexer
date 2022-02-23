@@ -112,7 +112,7 @@ class transform
 
     private function post_or_meta()
     {
-        if (array_key_exists($this->target,$this->current_post['post']))
+        if (property_exists($this->current_post['post'],$this->target))
         {
             $this->post_or_meta = 'post';
         }
